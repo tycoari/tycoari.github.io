@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SLO Tenants Union - Fighting for safe, affordable, and dignified housing">
+    <meta name="theme-color" content="#E87856">
+    <title>SLO Tenants Union</title>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #F5E6D3;
+        }
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            color: #001A4D;
+        }
+        svg { display: inline-block; }
+        .btn-pill {
+            border-radius: 50px;
+            padding: 14px 40px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-pill-filled {
+            background-color: #E87856;
+            color: white;
+        }
+        .btn-pill-filled:hover {
+            background-color: #d66844;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 120, 86, 0.3);
+        }
+        .btn-pill-outline {
+            background-color: transparent;
+            color: #001A4D;
+            border: 2px solid #001A4D;
+        }
+        .btn-pill-outline:hover {
+            background-color: #001A4D;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const Menu = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        );
+        
+        const X = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        );
+        
+        const Instagram = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="1.5"></circle>
+            </svg>
+        );
+        
+        const Facebook = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+        );
+        
+        const Phone = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+        );
+        
+        const Mail = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+        );
+
+        const Calendar = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+        );
+
+        const SLOTenantsUnion = () => {
+            const [activePage, setActivePage] = React.useState('home');
+            const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+            const [newsletterEmail, setNewsletterEmail] = React.useState('');
+            const [newsletterMessage, setNewsletterMessage] = React.useState('');
+
+            const colors = {
+                primary: '#E87856',
+                dark: '#001A4D',
+                cream: '#F5E6D3',
+                text: '#2C3E50',
+                light: '#FFFFFF'
+            };
+
+            const handleNewsletterSignup = (e) => {
+                e.preventDefault();
+                if (newsletterEmail) {
+                    setNewsletterMessage('Thank you! Check your email to confirm.');
+                    setNewsletterEmail('');
+                    setTimeout(() => setNewsletterMessage(''), 3000);
+                }
+            };
+
+            const Header = () => (
+                <header style={{ backgroundColor: colors.light, boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }} className="sticky top-0 z-50">
+                    <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+                        <div className="flex items-center gap-4 cursor-pointer" onClick={() => { setActivePage('home'); setMobileMenuOpen(false); }}>
+                            <img src="https://i.ibb.co/9jJyzkg/SLOTU-Logo-2-0-2.png" alt="SLO Tenants Union" style={{ height: '60px', width: 'auto' }} />
+                            <div className="hidden sm:block">
+                                <h1 style={{ color: colors.dark }} className="font-bold text-lg">SLO Tenants Union</h1>
+                                <p style={{ color: colors.primary }} className="text-xs font-semibold">Fighting for housing justice</p>
+                            </div>
+                        </div>
+
+                        <nav className="hidden md:flex gap-8 items-center">
+                            {['home', 'about', 'resources', 'calendar', 'get-involved', 'contact'].map(page => (
+                                <button 
+                                    key={page} 
+                                    onClick={() => setActivePage(page)} 
+                                    style={{ color: activePage === page ? colors.primary : colors.dark, fontWeight: activePage === page ? '700' : '500' }} 
+                                    className="hover:opacity-75 transition capitalize text-sm"
+                                >
+                                    {page === 'get-involved' ? 'Get Involved' : page === 'calendar' ? 'Calendar' : page}
+                                </button>
+                            ))}
+                        </nav>
+
+                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden" style={{ color: colors.dark }}>
+                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
+
+                    {mobileMenuOpen && (
+                        <nav style={{ backgroundColor: colors.cream }} className="md:hidden px-6 py-6 space-y-4 border-t">
+                            {['home', 'about', 'resources', 'calendar', 'get-involved', 'contact'].map(page => (
+                                <button 
+                                    key={page}
+                                    onClick={() => { setActivePage(page); setMobileMenuOpen(false); }} 
+                                    className="block w-full text-left font-semibold capitalize"
+                                    style={{ color: colors.dark }}
+                                >
+                                    {page === 'get-involved' ? 'Get Involved' : page === 'calendar' ? 'Calendar' : page}
+                                </button>
+                            ))}
+                        </nav>
+                    )}
+                </header>
+            );
+
+            const HomePage = () => (
+                <div>
+                    {/* Hero Section */}
+                    <section style={{ backgroundColor: colors.cream }} className="px-6 py-32 md:py-48">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h1 style={{ color: colors.dark }} className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                                Who we are
+                            </h1>
+                            <p style={{ color: colors.text }} className="text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                                The San Luis Obispo Tenants Union is a tenant-led group that defends all renters' right to safe, secure, and affordable housing. In the community, we protect tenants from unsafe and unhealthy living conditions, rent gouging, harassment by landlords and property managers, and eviction without cause. Join us to build collective power, create change in our neighborhoods, and contribute to a more just future for our posterity!
+                            </p>
+                            <button onClick={() => setActivePage('get-involved')} className="btn-pill btn-pill-filled">
+                                LEARN MORE
+                            </button>
+                        </div>
+                    </section>
+
+                    {/* Core Values Section */}
+                    <section style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 style={{ color: colors.dark }} className="text-4xl md:text-5xl font-bold text-center mb-16">
+                                Our Values
+                            </h2>
+                            <div className="grid md:grid-cols-1 gap-12 max-w-4xl mx-auto">
+                                <div>
+                                    <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-4">
+                                        Fairness, Unity, Safety & Stability
+                                    </h3>
+                                    <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-6">
+                                        At the SLO Tenants Union, our core values are fairness, unity, safety, and stability. We believe in a fair and equitable housing system where all renters are treated with dignity and corporate landlords are held accountable for exploiting tenants through unethical practices like price gouging, unsafe living conditions, and no-fault evictions. Fairness means ensuring housing policies work for everyone, not just those with wealth and power.
+                                    </p>
+                                    <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-6">
+                                        Unity is our strength; we come from diverse backgrounds but are united in our shared need for safe, secure, affordable homes. Together, we amplify our voices to demand respect and action from landlords and policymakers alike.
+                                    </p>
+                                    <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-6">
+                                        Safety is non-negotiable. We advocate for basic protections, like functional locks, clean air, and tenant-landlord solid communication, because no one should live in fear or under unhealthy conditions. Finally, stability is at the heart of our work as we push for policies that make housing affordable and accessible for everyone. We believe stable housing is the foundation of strong communities, allowing families to plan for their futures, save for emergencies, and thrive.
+                                    </p>
+                                    <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                        By standing together, we build a future where everyone can live in a home that supports their well-being and security.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Three Core Reforms */}
+                    <section style={{ backgroundColor: colors.cream }} className="px-6 py-32">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 style={{ color: colors.dark }} className="text-4xl md:text-5xl font-bold text-center mb-4">
+                                Our Three Core Reforms
+                            </h2>
+                            <div style={{ height: '4px', backgroundColor: colors.primary, width: '60px', margin: '0 auto 32px' }}></div>
+                            
+                            <div className="space-y-16">
+                                <div className="grid md:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="text-3xl font-bold mb-6">Mandatory Rental Registry</h3>
+                                        <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                            A citywide database of rental units, ownership, and conditions to give SLO the data it needs for informed policy decisions and hold negligent landlords accountable.
+                                        </p>
+                                    </div>
+                                    <div style={{ backgroundColor: colors.primary }} className="p-12 rounded-lg text-white text-center h-80 flex items-center justify-center">
+                                        <div>
+                                            <div className="text-6xl mb-4">📋</div>
+                                            <p className="text-xl font-bold">Know What's in Our Homes</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-12 items-center">
+                                    <div style={{ backgroundColor: colors.primary }} className="p-12 rounded-lg text-white text-center h-80 flex items-center justify-center">
+                                        <div>
+                                            <div className="text-6xl mb-4">🔒</div>
+                                            <p className="text-xl font-bold">Safe Living Standards</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="text-3xl font-bold mb-6">Modernize Health & Safety Standards</h3>
+                                        <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                            Update housing code with common-sense protections including deadbolts on exterior doors, mold remediation standards, smoke-free housing, and safety lighting.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="text-3xl font-bold mb-6">Strengthen Rent Stabilization</h3>
+                                        <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                            Cap annual increases at 5% or inflation (whichever is lower) and ensure just-cause protections for all renters, keeping families stable in their homes.
+                                        </p>
+                                    </div>
+                                    <div style={{ backgroundColor: colors.primary }} className="p-12 rounded-lg text-white text-center h-80 flex items-center justify-center">
+                                        <div>
+                                            <div className="text-6xl mb-4">📊</div>
+                                            <p className="text-xl font-bold">Fair Rent Increases</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            );
+
+            const AboutPage = () => (
+                <div style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                    <div className="max-w-4xl mx-auto">
+                        <h1 style={{ color: colors.dark }} className="text-5xl font-bold mb-16">About SLO Tenants Union</h1>
+                        
+                        <section className="mb-16">
+                            <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Our History</h2>
+                            <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                The SLO Tenants Union (formerly SLO Rent Coalition) was founded by housing justice advocates dedicated to protecting the rights and dignity of San Luis Obispo's renters. More than 60% of SLO residents are renters, yet most live without key legal protections. The organization was born from a simple truth: renters deserve a voice, collective power, and policies that protect their rights to safe, secure, and affordable housing.
+                            </p>
+                        </section>
+
+                        <section className="mb-16">
+                            <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Why We Do This Work</h2>
+                            <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-6">
+                                Every day, renters in San Luis Obispo face unsafe living conditions, predatory rent increases, and eviction without just cause. These aren't inevitable—they're the result of a broken housing system that prioritizes profit over people.
+                            </p>
+                            <p style={{ color: colors.text }} className="text-lg leading-relaxed">
+                                We organize because we believe housing is a human right. We fight for a San Luis Obispo where all working-class people can live with dignity, safety, and security.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            );
+
+            const ResourcesPage = () => (
+                <div style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                    <div className="max-w-4xl mx-auto">
+                        <h1 style={{ color: colors.dark }} className="text-5xl font-bold mb-16">Resources</h1>
+
+                        {/* Know Your Rights Section */}
+                        <section className="mb-20">
+                            <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Know Your Rights</h2>
+                            
+                            <div className="space-y-8">
+                                <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
+                                    <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-4">
+                                        1. What are my rights as a tenant?
+                                    </h3>
+                                    <ul style={{ color: colors.text }} className="space-y-4">
+                                        <li className="flex gap-4">
+                                            <span style={{ color: colors.primary, fontWeight: 'bold' }}>•</span>
+                                            <span><strong>Landlords are required by law</strong> to address specific issues in your rental, including mold, leaks, broken windows, vermin, and faulty wiring.</span>
+                                        </li>
+                                        <li className="flex gap-4">
+                                            <span style={{ color: colors.primary, fontWeight: 'bold' }}>•</span>
+                                            <span><strong>Your landlord cannot evict you for</strong> reporting problems or requesting repairs. Always document your communications with them.</span>
+                                        </li>
+                                        <li className="flex gap-4">
+                                            <span style={{ color: colors.primary, fontWeight: 'bold' }}>•</span>
+                                            <span><strong>Rent increases are limited</strong> to twice yearly, and the total annual increase is capped at 5% plus the local Consumer Price Index (CPI).</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
+                                    <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-4">
+                                        2. How can I find affordable housing?
+                                    </h3>
+                                    <div style={{ color: colors.text }} className="space-y-6">
+                                        <div>
+                                            <p className="font-bold text-lg mb-2">On-Campus Housing:</p>
+                                            <p>Cal Poly students may be able to find more affordable housing options by living on campus. Be sure to check if their financial aid can cover housing costs.</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-lg mb-2">Off-Campus Housing:</p>
+                                            <p>You should start your search early when looking off-campus, as housing fills up fast. Many students start looking as early as a year in advance. Use resources like Apartments.com and Cal Poly Off-Campus Housing. You can also join housing groups like the Cal Poly Housing Facebook Group to connect with other students looking for housing and roommates.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Local Organizations */}
+                        <section>
+                            <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Local & Regional Support</h2>
+                            <div className="space-y-6">
+                                {[
+                                    { name: 'SLO Legal Assistance Foundation (SLOLAF)', desc: 'Free legal services for low-income residents' },
+                                    { name: 'California Rural Legal Assistance (CRLA) - SLO', desc: 'Legal aid for agricultural workers and rural communities' },
+                                    { name: 'SLO Solutions', desc: 'Community-based mediation and conflict resolution' },
+                                    { name: 'Creative Mediation', desc: 'Dispute resolution services' },
+                                    { name: 'SLO Homeless Alliance', desc: 'Services and advocacy for unhoused community members' }
+                                ].map((org, idx) => (
+                                    <div key={idx} style={{ backgroundColor: colors.cream, padding: '24px', borderRadius: '8px' }}>
+                                        <h3 style={{ color: colors.dark }} className="font-bold text-lg mb-2">{org.name}</h3>
+                                        <p style={{ color: colors.text }}>{org.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            );
+
+            const CalendarPage = () => (
+                <div style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                    <div className="max-w-4xl mx-auto">
+                        <h1 style={{ color: colors.dark }} className="text-5xl font-bold mb-4">Organizational Calendar</h1>
+                        <p style={{ color: colors.text }} className="text-xl mb-16">
+                            Join us for meetings, organizing events, and community gatherings!
+                        </p>
+
+                        <section className="space-y-8">
+                            {/* Monthly Meetings */}
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px', borderLeft: `6px solid ${colors.primary}` }}>
+                                <h2 style={{ color: colors.dark }} className="text-2xl font-bold mb-6 flex items-center gap-3">
+                                    <Calendar size={32} style={{ color: colors.primary }} />
+                                    General Meetings
+                                </h2>
+                                <div className="space-y-4" style={{ color: colors.text }}>
+                                    <p><strong className="text-lg">Frequency:</strong> Second Sunday of every month</p>
+                                    <p><strong className="text-lg">Time:</strong> 3:30 PM - 5:00 PM</p>
+                                    <p><strong className="text-lg">Location:</strong> Gala Pride and Diversity Center</p>
+                                    <p className="text-base ml-4">1060 Palm St, San Luis Obispo, CA 93401</p>
+                                    <p className="mt-6 text-lg">All renters welcome! Come learn about tenant rights, organize for change, and build collective power for housing justice.</p>
+                                </div>
+                            </div>
+
+                            {/* Office Hours */}
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px', borderLeft: `6px solid ${colors.primary}` }}>
+                                <h2 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">Regular Office Hours</h2>
+                                <div style={{ color: colors.text }} className="space-y-4">
+                                    <p><strong className="text-lg">Wednesdays: 6:00 PM - 8:00 PM via Zoom</strong></p>
+                                    <p className="text-lg">Drop in to ask questions about your tenant rights, get advice, or learn about how to get involved.</p>
+                                    <p className="text-lg">Email slorentcoalition@gmail.com for the Zoom link.</p>
+                                </div>
+                            </div>
+
+                            {/* Upcoming Events */}
+                            <div>
+                                <h2 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">Upcoming Events</h2>
+                                <p style={{ color: colors.text }} className="text-lg text-center">
+                                    Check back soon for announcements about workshops, trainings, and advocacy events!
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            );
+
+            const GetInvolvedPage = () => (
+                <div style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                    <div className="max-w-6xl mx-auto">
+                        <h1 style={{ color: colors.dark }} className="text-5xl font-bold mb-16">Get Involved</h1>
+
+                        {/* Organizing Methods */}
+                        <section className="mb-20">
+                            <h2 style={{ color: colors.dark }} className="text-3xl font-bold text-center mb-16">Ways We Organize</h2>
+                            <div className="grid md:grid-cols-3 gap-12">
+                                {[
+                                    {
+                                        title: 'Door-to-Door Canvassing',
+                                        desc: 'At the SLO Tenants Union, we go door-to-door canvassing to connect directly with renters in our community. We talk with tenants about their rights, listen to their experiences, and offer support for issues like rent increases, unsafe living conditions, or eviction threats. By having these one-on-one conversations, we help inform renters and build a stronger, more united community to stand up for our collective rights.'
+                                    },
+                                    {
+                                        title: 'Giving Public Comment',
+                                        desc: 'We\'ve consistently advocated for renters by engaging directly with the SLO City Council through public comments and letter-writing campaigns. At council meetings, we raise awareness about tenant issues like unsafe housing conditions and unfair evictions, urging local leaders to take action. Through organized efforts, including formal letters and public testimonies, we push for stronger tenant protections, rent control measures, and policies promoting affordable housing.'
+                                    },
+                                    {
+                                        title: 'Sharing Our Stories',
+                                        desc: 'We\'ve actively engaged with local media to amplify the voices of renters and highlight the work of the SLO Tenants Union. Through writing opinion pieces and participating in interviews, we\'ve shared our stories, advocated for tenant rights, and brought attention to the urgent housing issues in San Luis Obispo. These media efforts help us raise public awareness, build community support, and keep the pressure on local leaders.'
+                                    }
+                                ].map((method, idx) => (
+                                    <div key={idx} style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
+                                        <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">{method.title}</h3>
+                                        <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-8">{method.desc}</p>
+                                        <button className="btn-pill btn-pill-outline">
+                                            JOIN US
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Get Involved CTA */}
+                        <section className="space-y-8">
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px', borderLeft: `6px solid ${colors.primary}` }}>
+                                <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">📧 Join Our Newsletter</h3>
+                                <p style={{ color: colors.text }} className="text-lg mb-6">
+                                    Get updates on organizing efforts, tenant rights, and upcoming events.
+                                </p>
+                                <form onSubmit={handleNewsletterSignup} className="space-y-4">
+                                    <input 
+                                        type="email" 
+                                        placeholder="Enter your email" 
+                                        value={newsletterEmail} 
+                                        onChange={(e) => setNewsletterEmail(e.target.value)} 
+                                        required 
+                                        className="w-full px-6 py-4 border-2 rounded-lg focus:outline-none text-lg"
+                                        style={{ borderColor: colors.primary }}
+                                    />
+                                    <button type="submit" className="btn-pill btn-pill-filled w-full">
+                                        Sign Up
+                                    </button>
+                                    {newsletterMessage && (
+                                        <p style={{ color: colors.primary }} className="text-base font-semibold">{newsletterMessage}</p>
+                                    )}
+                                </form>
+                            </div>
+
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px', borderLeft: `6px solid ${colors.dark}` }}>
+                                <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">💬 Connect With Us</h3>
+                                <p style={{ color: colors.text }} className="text-lg mb-6">
+                                    Want to help organize your neighbors? Join our meetings and volunteer. DM us on Instagram to learn more!
+                                </p>
+                                <a href="https://instagram.com/slotenantsunion" target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill-filled inline-block">
+                                    Message on Instagram
+                                </a>
+                            </div>
+
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px', borderLeft: `6px solid ${colors.dark}` }}>
+                                <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">📅 Attend a Meeting</h3>
+                                <p style={{ color: colors.text }} className="text-lg mb-6">
+                                    Join us on the <strong>second Sunday of every month from 3:30-5 PM</strong> at the Gala Pride and Diversity Center (1060 Palm St, San Luis Obispo, CA 93401).
+                                </p>
+                                <p style={{ color: colors.text }} className="text-lg">
+                                    All renters welcome! No experience necessary. Come meet other renters and build power for housing justice together.
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            );
+
+            const ContactPage = () => (
+                <div style={{ backgroundColor: colors.light }} className="px-6 py-32">
+                    <div className="max-w-4xl mx-auto">
+                        <h1 style={{ color: colors.dark }} className="text-5xl font-bold mb-16">Contact Us</h1>
+
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Get In Touch</h2>
+                                <div className="space-y-8">
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="font-bold text-lg mb-3 flex items-center gap-3">
+                                            <Mail size={24} style={{ color: colors.primary }} /> Email
+                                        </h3>
+                                        <a href="mailto:slorentcoalition@gmail.com" style={{ color: colors.primary }} className="text-lg hover:underline">
+                                            slorentcoalition@gmail.com
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="font-bold text-lg mb-3 flex items-center gap-3">
+                                            <Phone size={24} style={{ color: colors.primary }} /> Phone
+                                        </h3>
+                                        <a href="tel:+18057791639" style={{ color: colors.primary }} className="text-lg hover:underline">
+                                            (805) 779-1639
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        <h3 style={{ color: colors.dark }} className="font-bold text-lg mb-4">Follow Us</h3>
+                                        <div className="flex gap-4">
+                                            <a href="https://instagram.com/slotenantsunion" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-lg hover:opacity-75" style={{ backgroundColor: colors.cream, color: colors.primary }}>
+                                                <Instagram size={20} /> Instagram
+                                            </a>
+                                            <a href="https://facebook.com/slotenantsunion" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-lg hover:opacity-75" style={{ backgroundColor: colors.cream, color: colors.primary }}>
+                                                <Facebook size={20} /> Facebook
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
+                                <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-8">Office Hours</h3>
+                                <div style={{ color: colors.text }} className="space-y-6">
+                                    <div>
+                                        <p className="font-bold text-lg mb-2">Wednesdays</p>
+                                        <p className="text-lg">6:00 PM - 8:00 PM</p>
+                                        <p className="text-base text-gray-600 mt-2">Via Zoom</p>
+                                        <p className="text-base text-gray-600 mt-4">Email us for the Zoom link</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+
+            const Footer = () => (
+                <footer style={{ backgroundColor: colors.dark }} className="text-white py-16 px-6">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="grid md:grid-cols-3 gap-12 mb-12">
+                            <div>
+                                <h3 style={{ color: colors.primary }} className="font-bold text-lg mb-4">SLO Tenants Union</h3>
+                                <p className="opacity-80 text-base">
+                                    Building collective power for safe, affordable, and dignified housing in San Luis Obispo.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 style={{ color: colors.primary }} className="font-bold text-lg mb-4">Quick Links</h3>
+                                <ul className="space-y-3 opacity-80">
+                                    <li><button onClick={() => setActivePage('home')} className="hover:text-opacity-100">Home</button></li>
+                                    <li><button onClick={() => setActivePage('about')} className="hover:text-opacity-100">About</button></li>
+                                    <li><button onClick={() => setActivePage('resources')} className="hover:text-opacity-100">Resources</button></li>
+                                    <li><button onClick={() => setActivePage('calendar')} className="hover:text-opacity-100">Calendar</button></li>
+                                    <li><button onClick={() => setActivePage('get-involved')} className="hover:text-opacity-100">Get Involved</button></li>
+                                    <li><button onClick={() => setActivePage('contact')} className="hover:text-opacity-100">Contact</button></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 style={{ color: colors.primary }} className="font-bold text-lg mb-4">Follow Us</h3>
+                                <div className="flex gap-6">
+                                    <a href="https://instagram.com/slotenantsunion" target="_blank" rel="noopener noreferrer" className="hover:opacity-75">
+                                        <Instagram size={28} />
+                                    </a>
+                                    <a href="https://facebook.com/slotenantsunion" target="_blank" rel="noopener noreferrer" className="hover:opacity-75">
+                                        <Facebook size={28} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }} className="pt-8 text-center opacity-80 text-sm">
+                            <p>© 2026 SLO Tenants Union. Fighting for housing justice in San Luis Obispo. ✊</p>
+                        </div>
+                    </div>
+                </footer>
+            );
+
+            const renderPage = () => {
+                switch(activePage) {
+                    case 'home': return <HomePage />;
+                    case 'about': return <AboutPage />;
+                    case 'resources': return <ResourcesPage />;
+                    case 'calendar': return <CalendarPage />;
+                    case 'get-involved': return <GetInvolvedPage />;
+                    case 'contact': return <ContactPage />;
+                    default: return <HomePage />;
+                }
+            };
+
+            return (
+                <div style={{ backgroundColor: colors.cream, color: colors.text }}>
+                    <Header />
+                    <main>
+                        {renderPage()}
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<SLOTenantsUnion />);
+    </script>
+</body>
+</html>
