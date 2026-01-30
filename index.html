@@ -186,7 +186,7 @@
                     <section style={{ backgroundColor: colors.cream }} className="px-6 py-32 md:py-48">
                         <div className="max-w-4xl mx-auto text-center">
                             <h1 style={{ color: colors.dark }} className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-                                Who we are
+                                Who We Are
                             </h1>
                             <p style={{ color: colors.text }} className="text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto">
                                 The San Luis Obispo Tenants Union is a tenant-led group that defends all renters' right to safe, secure, and affordable housing. In the community, we protect tenants from unsafe and unhealthy living conditions, rent gouging, harassment by landlords and property managers, and eviction without cause. Join us to build collective power, create change in our neighborhoods, and contribute to a more just future for our posterity!
@@ -292,17 +292,17 @@
                         <section className="mb-16">
                             <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Our History</h2>
                             <p style={{ color: colors.text }} className="text-lg leading-relaxed">
-                                The SLO Tenants Union (formerly SLO Rent Coalition) was founded by housing justice advocates dedicated to protecting the rights and dignity of San Luis Obispo's renters. More than 60% of SLO residents are renters, yet most live without key legal protections. The organization was born from a simple truth: renters deserve a voice, collective power, and policies that protect their rights to safe, secure, and affordable housing.
+                                The SLO Tenants Union (formerly SLO Rent Coalition) was founded by housing justice advocates dedicated to protecting the rights and dignity of San Luis Obispo's renters. More than 60% of SLO residents are renters, yet most live without key legal protections. Our organization was born from a simple truth: renters deserve a voice, collective power, and policies that protect their rights to safe, secure, and affordable housing.
                             </p>
                         </section>
 
                         <section className="mb-16">
                             <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Why We Do This Work</h2>
                             <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-6">
-                                Every day, renters in San Luis Obispo face unsafe living conditions, predatory rent increases, and eviction without just cause. These aren't inevitable—they're the result of a broken housing system that prioritizes profit over people.
+                                Every day, renters in San Luis Obispo face unsafe living conditions, predatory rent increases, and eviction without just cause. These conditions aren't inevitable, they're the result of a broken housing system that actively prioritizes profit over people.
                             </p>
                             <p style={{ color: colors.text }} className="text-lg leading-relaxed">
-                                We organize because we believe housing is a human right. We fight for a San Luis Obispo where all working-class people can live with dignity, safety, and security.
+                                We organize because we believe safe, stable housing is a human right. We take action for a San Luis Obispo where all working-class people can live with dignity, safety, and security.
                             </p>
                         </section>
                     </div>
@@ -397,8 +397,7 @@
                                 <div className="space-y-4" style={{ color: colors.text }}>
                                     <p><strong className="text-lg">Frequency:</strong> Second Sunday of every month</p>
                                     <p><strong className="text-lg">Time:</strong> 3:30 PM - 5:00 PM</p>
-                                    <p><strong className="text-lg">Location:</strong> Gala Pride and Diversity Center</p>
-                                    <p className="text-base ml-4">1060 Palm St, San Luis Obispo, CA 93401</p>
+                                    <p><strong className="text-lg">Location:</strong> Gala Pride and Diversity Center (1060 Palm St, San Luis Obispo, CA 93401)</p>
                                     <p className="mt-6 text-lg">All renters and allies welcome! Come learn about tenant rights, organize for change, and build collective power for housing justice.</p>
                                 </div>
                             </div>
@@ -451,9 +450,6 @@
                                     <div key={idx} style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
                                         <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-6">{method.title}</h3>
                                         <p style={{ color: colors.text }} className="text-lg leading-relaxed mb-8">{method.desc}</p>
-                                        <button className="btn-pill btn-pill-outline">
-                                            JOIN US
-                                        </button>
                                     </div>
                                 ))}
                             </div>
@@ -577,14 +573,14 @@
                             </div>
                             <div>
                                 <h3 style={{ color: colors.primary }} className="font-bold text-lg mb-4">Quick Links</h3>
-                                <ul className="space-y-3 opacity-80">
-                                    <li><button onClick={() => setActivePage('home')} className="hover:text-opacity-100">Home</button></li>
-                                    <li><button onClick={() => setActivePage('about')} className="hover:text-opacity-100">About</button></li>
-                                    <li><button onClick={() => setActivePage('resources')} className="hover:text-opacity-100">Resources</button></li>
-                                    <li><button onClick={() => setActivePage('calendar')} className="hover:text-opacity-100">Calendar</button></li>
-                                    <li><button onClick={() => setActivePage('get-involved')} className="hover:text-opacity-100">Get Involved</button></li>
-                                    <li><button onClick={() => setActivePage('contact')} className="hover:text-opacity-100">Contact</button></li>
-                                </ul>
+                                <div className="grid grid-cols-2 gap-4 opacity-80">
+                                    <button onClick={() => setActivePage('home')} className="hover:text-opacity-100 text-left">Home</button>
+                                    <button onClick={() => setActivePage('about')} className="hover:text-opacity-100 text-left">About</button>
+                                    <button onClick={() => setActivePage('resources')} className="hover:text-opacity-100 text-left">Resources</button>
+                                    <button onClick={() => setActivePage('calendar')} className="hover:text-opacity-100 text-left">Calendar</button>
+                                    <button onClick={() => setActivePage('get-involved')} className="hover:text-opacity-100 text-left">Get Involved</button>
+                                    <button onClick={() => setActivePage('contact')} className="hover:text-opacity-100 text-left">Contact</button>
+                                </div>
                             </div>
                             <div>
                                 <h3 style={{ color: colors.primary }} className="font-bold text-lg mb-4">Follow Us</h3>
