@@ -129,7 +129,7 @@
             const handleNewsletterSignup = (e) => {
                 e.preventDefault();
                 if (newsletterEmail) {
-                    setNewsletterMessage('Thank you for trying to sign up! Unfortunately this service is currently non-functional. Please reach out to slorentcoalition@gmail.com be added to our email list');
+                    setNewsletterMessage('Thank you for trying to sign up! Unfortunately this service is currently non-functional.');
                     setNewsletterEmail('');
                     setTimeout(() => setNewsletterMessage(''), 3000);
                 }
