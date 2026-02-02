@@ -322,7 +322,7 @@
                             <div className="space-y-8">
                                 <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
                                     <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-4">
-                                        1. What are my rights as a tenant?
+                                        1. What are my rights as a tenant in SLO?
                                     </h3>
                                     <ul style={{ color: colors.text }} className="space-y-4">
                                         <li className="flex gap-4">
@@ -342,7 +342,7 @@
 
                                 <div style={{ backgroundColor: colors.cream, padding: '32px', borderRadius: '8px' }}>
                                     <h3 style={{ color: colors.dark }} className="text-2xl font-bold mb-4">
-                                        2. How can I find affordable housing?
+                                        2. How can students find affordable housing?
                                     </h3>
                                     <div style={{ color: colors.text }} className="space-y-6">
                                         <div>
@@ -363,11 +363,9 @@
                             <h2 style={{ color: colors.dark }} className="text-3xl font-bold mb-8">Local & Regional Support</h2>
                             <div className="space-y-6">
                                 {[
-                                    { name: 'SLO Legal Assistance Foundation (SLOLAF)', desc: 'Free legal services for low-income residents' },
-                                    { name: 'California Rural Legal Assistance (CRLA) - SLO', desc: 'Legal aid for agricultural workers and rural communities' },
-                                    { name: 'SLO Solutions', desc: 'Community-based mediation and conflict resolution' },
-                                    { name: 'Creative Mediation', desc: 'Dispute resolution services' },
-                                    { name: 'SLO Homeless Alliance', desc: 'Services and advocacy for unhoused community members' }
+                                    { name: 'City of SLO Code Enforcement', desc: 'The City of San Luis Obispo Code Enforcement division, part of the Safe Housing Program, helps ensure that rental properties meet minimum habitability standards and that renters have safe housing. Tenants can report substandard rental housing conditions through the city online form, and the Code Enforcement office can be reached at (805) 594-8188. For general housing questions and programs, residents can contact the Housing Programs office at (805) 781-7524 or housing@slocity.org.' },
+                                    { name: 'SLO Legal Assistance Foundation (SLOLAF)', desc: 'San Luis Obispo Legal Assistance Foundation (SLOLAF) provides free legal assistance to low-income SLO County residents facing housing challenges, including eviction defense, unlawful rent increases, habitability issues, housing discrimination, and homelessness prevention. Tenants can contact SLOLAF at (805) 543-5140 or email intake@slolaf.org to determine eligibility for services. Callers should be prepared to describe their situation and provide any relevant paperwork from their landlord.' },
+                                    { name: 'California Rural Legal Assistance (CRLA) - SLO', desc: 'California Rural Legal Assistance (CRLA) provides free legal services to low-income residents in its service area, with expertise in employment and labor law, education law, housing law, civil rights, health law, and public benefits defense. The SLO office is located at 1880 Santa Barbara Ave Suite 240, San Luis Obispo, CA 93401. Prospective clients can call (805) 544-7994 to inquire about eligibility and services, and Spanish-language assistance and additional language interpretation services are available.' },
                                 ].map((org, idx) => (
                                     <div key={idx} style={{ backgroundColor: colors.cream, padding: '24px', borderRadius: '8px' }}>
                                         <h3 style={{ color: colors.dark }} className="font-bold text-lg mb-2">{org.name}</h3>
